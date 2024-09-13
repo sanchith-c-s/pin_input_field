@@ -105,6 +105,23 @@ class _HomePageState extends State<HomePage> {
           validator: (value){
             return value == validPin ? null : "Pin is incorrect";
           },
+          onCompleted: (pin){
+            print(
+              'Success: $pin',
+            );
+          },
+          errorBuilder: (errorText,pin){
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Center(
+                child: Text(errorText ?? "",
+                style: TextStyle(
+                  color: Colors.red
+                ),
+                ),
+              ),
+              );
+          },
         ),
         TextButton(onPressed: (){
           formKey.currentState!.validate();
